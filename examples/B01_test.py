@@ -145,19 +145,19 @@ fi.reinitialize(solver_settings=solver_settings)
 
 
 # Set the wind direction to run 360 degrees
-wd_array = np.arange(0, 360, 1)
-fi.reinitialize(wind_directions=wd_array)
+# wd_array = np.arange(0, 360, 1)
+fi.reinitialize( wind_speeds=[16.0] )
 
 # insert virual metmast locations
 # points_x = np.arange(0,20400,100)
 # points_y = np.arange(0,20400,100)
 # points_z =  [10] * 204
 
-nx, ny = (2, 3)
+nx, ny = (2, 1)
 x = np.linspace(0, 13000, nx)
 y = np.linspace(0, 20000, ny)
 points_xg, points_yg = np.meshgrid(x, y)
-points_z = np.full((nx, ny), 11)
+# points_z = np.full((nx, ny), 11)
 
 points_x=np.reshape(points_xg,nx*ny)
 points_y=np.reshape(points_yg,nx*ny)
@@ -165,9 +165,10 @@ points_z = points_x*0+10
 
 # Collect the points
 u_at_points = fi.sample_flow_at_points(points_x, points_y, points_z)
-# print(fi.sample_flow_at_points.u_sorted)
+print(fi.floris.flow_field.u_sorted)
+print(fi.floris.flow_field.v_sorted)
 # print(fi.sample_flow_at_points.v_sorted)
-print(u_at_points)
+# print(u_at_points)
 wait = input("Press Enter to continue.")
 
 fig, ax = plt.subplots(1,2)
