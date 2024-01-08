@@ -324,9 +324,8 @@ class Floris(BaseClass):
         else:
             full_flow_sequential_solver(self.farm, self.flow_field, field_grid, self.wake)
 
-        return self.flow_field.u_sorted[:,:,:,0,0] # Remove turbine grid dimensions
-        return self.flow_field.v_sorted[:,:,:,0,0] # Remove turbine grid dimensions
-        wait = input("ho cancellato riga 328.")
+        return self.flow_field.u_sorted[:,:,:,0,0] , self.flow_field.v_sorted[:,:,:,0,0] # Remove turbine grid dimensions
+        wait = input("non ho cancellato riga 328.")
 
     def finalize(self):
         # Once the wake calculation is finished, unsort the values to match
